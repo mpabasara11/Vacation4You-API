@@ -640,6 +640,8 @@ router.post('/book-cruise', function (req, res){
  const cCruiseProvider = req.body.cCruiseProvider ;
  const cMealPreferences = req.body.cMealPreferences ;
  const cCabinSelection = req.body.cCabinSelection ;
+ const cSelectedMealPreference = req.body.selectedMealPreference ;
+ const cSelectedCabin = req.body.selectedCabin ;
 
 /////////////////
 
@@ -666,6 +668,8 @@ const newBookedCruise = new BookedCruise({
     cruiseProvider: cCruiseProvider,
     mealPreferences: cMealPreferences,
     cabinSelection: cCabinSelection,
+    selectedMealPreference: cSelectedMealPreference,
+    selectedCabin: cSelectedCabin,
 });
 
 newBookedCruise.save()
@@ -707,6 +711,8 @@ router.post('/book-activity', function (req, res){
     const aPrice = req.body.aPrice;
     const aParticipants = req.body.aParticipants;
     const aAgeOfParticipants = req.body.aAgeOfParticipants;    
+    const aNumberOfParticipants = req.body.aNumberOfParticipants;
+    const aMaximumParticipants = req.body.aMaximumParticipants;
  
  /////////////////
  
@@ -728,6 +734,8 @@ router.post('/book-activity', function (req, res){
      price: aPrice,
      participants: aParticipants,
      ageOfParticipants: aAgeOfParticipants, 
+     numberOfParticipants: aNumberOfParticipants,
+     maximumParticipants: aMaximumParticipants,
  });
  
  newBookedActivity.save()

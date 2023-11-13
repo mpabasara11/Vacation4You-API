@@ -18,7 +18,9 @@ const bookedActivitySchema = new mongoose.Schema({
     rating: Number,
     price: Number,
     participants: Number,
-    ageOfParticipants: Number, 
+    ageOfParticipants: Number,
+    numberOfParticipants: Number,
+    maximumParticipants: Number,
     // other fields if needed...
     });
         

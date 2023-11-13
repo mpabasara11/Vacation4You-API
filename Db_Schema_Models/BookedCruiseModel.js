@@ -24,6 +24,8 @@ const bookedCruiseSchema = new mongoose.Schema({
     cruiseProvider: String,
     mealPreferences: String,
     cabinSelection: String,
+    selectedMealPreference: String,
+    selectedCabin: String,
     // other fields if needed...
     });
         
