@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 
 
-
 const mongoose = require('mongoose');
+
 
 const jwt = require('jsonwebtoken');
 
@@ -15,7 +15,7 @@ var User = require('../Db_Schema_Models/UserModel.js');
 const bcrypt = require('bcrypt');
 
 
-//login route
+//generate token route
 router.post('/generate-token', function (req, res) 
 {
     const userName = req.body.usrName ;

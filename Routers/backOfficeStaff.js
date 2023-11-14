@@ -144,11 +144,6 @@ router.post('/single-upload', function (req, res)
     const pPrice = req.body.pPrice;
   
 
-
-
-
-
-
 if(reservationType == "Cruise")
 {
 
@@ -301,6 +296,7 @@ router.post('/bulk-upload', function (req, res)
  //parameters for all
  const documentType = req.body.documentType ;
  const dataArray = req.body.dataArray ;
+
  var ignoredRecords = 0;
 
 
@@ -385,7 +381,7 @@ Cruise.findOne({ cruiseName: cCruiseName })
      
       }
     
-      // Send a response when all cruises have been processed.
+      // Send a response when all cruises are processed.
       res.status(201).json({ message: 'Cruises added successfully' , totalRecordsOnFile: dataArray.length , ignoredRecords: ignoredRecords});
       console.log("total records on the file: " + dataArray.length);
       console.log("ignored records: " + ignoredRecords);

@@ -13,7 +13,7 @@ var BookedPackage = require('../Db_Schema_Models/BookedPackageModel.js');
 //view cruises route
 router.get('/view-cruises', function (req, res) 
 {
-//retrieve all cruises and send them to the client in json format
+//retrieve all cruises and send them to the client in jason format
 
 Cruise.find()
   .then(cruises => {
@@ -40,7 +40,7 @@ Cruise.find()
 //view activities route
 router.get('/view-activities', function (req, res) 
 {
-//retrieve all activities and send them to the client in json format
+//retrieve all activities and send them to the client in jason format
 
 Activity.find()
   .then(activities => {
@@ -95,8 +95,6 @@ Package.find()
 router.get('/search-cruises', function (req, res) 
 {
     const searchBy = req.body.searchBy ;
-
-
 
 
     if(searchBy == "departureDistination")
