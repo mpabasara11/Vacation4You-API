@@ -16,7 +16,7 @@ const bcrypt = require('bcrypt');
 
 
 //login route
-router.post('/login', function (req, res) 
+router.post('/generate-token', function (req, res) 
 {
     const userName = req.body.usrName ;
     const password = req.body.pswd ;
