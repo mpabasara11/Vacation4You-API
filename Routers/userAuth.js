@@ -38,9 +38,9 @@ router.post('/login', function (req, res)
 
             console.log('Passwords match. User authenticated. Token sent.');
             const token = jwt.sign({ username: user.username ,userrole: user.userRole ,firstname:user.firstName ,lastname:user.lastName ,email:user.email ,nic:user.nic}, secretKey, { expiresIn: '1h' });
-            //res.status(200).json({ token });
+            res.status(200).json({ token });
 
-            res.status(200).cookie('name', 'halal').send('Cookie set');
+         
 
 
 
