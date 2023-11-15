@@ -8,6 +8,8 @@ var User = require('../Db_Schema_Models/UserModel.js');
 const bcrypt = require('bcrypt');
 
 
+
+
 //view all users route
 router.get('/view-users', function (req, res) 
 {

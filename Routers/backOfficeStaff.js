@@ -13,7 +13,6 @@ var BookedPackage = require('../Db_Schema_Models/BookedPackageModel.js');
 
 
 
-
 //view cruises route
 router.get('/view-cruises', function (req, res) 
 {
@@ -942,8 +941,6 @@ BookedPackage.find()
 
 
 });
-
-
 
 
 module.exports = router;
