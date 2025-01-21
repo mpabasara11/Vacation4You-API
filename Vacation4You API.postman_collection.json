@@ -1,0 +1,909 @@
+{
+	"info": {
+		"_postman_id": "7dcf0c2a-4517-44dd-ae54-bef7c753e647",
+		"name": "Vacation4You API",
+		"description": "**API basic details**\n\n- Host : cyclic\n- Base url : [https://enthusiastic-tick-school-uniform.cyclic.app](https://enthusiastic-tick-school-uniform.cyclic.app/)\n- Port : non specified\n- Protocol : https\n- Request format : json\n- Response format : json\n    \n\n**Error Codes**\n\n- 200: OK\n- 201: Created\n- 400: Bad Request\n- 401: Unauthorized\n- 404: Not Found\n    \n- 409: Conflict\n    \n- 500: Internal Server Error",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "14563490"
+	},
+	"item": [
+		{
+			"name": "Authenticate",
+			"item": [
+				{
+					"name": "Generate access token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"usrName\": \"mpabasara11\",\r\n    \"pswd\": \"zxasd\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://enthusiastic-tick-school-uniform.cyclic.app/authenticate/generate-token",
+						"description": "###### _when username and password matches with the data on database the server will response with a access token which will expire in 1 hours_"
+					},
+					"response": []
+				},
+				{
+					"name": "Verify access token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImthbWkiLCJ1c2Vycm9sZSI6Im5vbiIsImZpcnN0bmFtZSI6ImFtYWxhIiwibGFzdG5hbWUiOiJkYW1hbGEiLCJlbWFpbCI6ImFtYWxkdW1hbEBnbWFpbC5jb20iLCJpYXQiOjE2OTk4MDcyMzYsImV4cCI6MTY5OTgxMDgzNn0.VgsQCmxfH9qTIX0P-4JibV3aYLVlSPCjPUMZgMrlzqw\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://enthusiastic-tick-school-uniform.cyclic.app/authenticate/verify-token",
+						"description": "###### _when a jwt access token is sent to this endpoint server will verify its validity and if its valid then server also return user informations of that user_"
+					},
+					"response": []
+				}
+			],
+			"description": "### End points for authentication and authorization"
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Add user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"usrName\": \"mpabasara11\",\r\n    \"pswd\": \"zxasd\",\r\n    \"userRole\": \"backOfficer\",\r\n    \"firstName\": \"malindu\",\r\n    \"lastName\": \"pabasara\",\r\n    \"email\": \"mpabasara11@gmail.com\",\r\n    \"nic\": \"992722231v\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://enthusiastic-tick-school-uniform.cyclic.app/admin/add-user",
+						"description": "###### _used to add users to the system.userRole must be either backOfficer , bookingOfficer or admin_"
+					},
+					"response": []
+				},
+				{
+					"name": "Reset password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"usrName\": \"mpabasara11\",\r\n    \"pswd\": \"zxasdqwer\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://enthusiastic-tick-school-uniform.cyclic.app/admin/reset-password",
+						"description": "###### _used to reset user password_"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete user",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"usrName\":\"mpabasara12\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://enthusiastic-tick-school-uniform.cyclic.app/admin/delete-user",
+						"description": "###### _used to delete user account from the system_"
+					},
+					"response": []
+				},
+				{
+					"name": "View users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://enthusiastic-tick-school-uniform.cyclic.app/admin/view-users",
+						"description": "###### _used to view all the users on the system_"
+					},
+					"response": []
+				},
+				{
+					"name": "Search users",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"usrName\":\"mpabasara11\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://enthusiastic-tick-school-uniform.cyclic.app/admin/search-users",
+						"description": "###### _used to search users on the system_"
+					},
+					"response": []
+				}
+			],
+			"description": "### End points for admin"
+		},
+		{
+			"name": "Back office agent",
+			"item": [
+				{
+					"name": "Upload data",
+					"item": [
+						{
+							"name": "Single upload",
+							"item": [
+								{
+									"name": "Upload cruise",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": " {\r\n     \"reservationType\": \"Cruise\",\r\n    \"cCruiseName\": \"cruise A\",\r\n    \"cDepartureDestination\": \"colombo\",\r\n    \"cArrivalDestination\":\"jaffna\",\r\n    \"cDepartureDate\":\"2023-11-07\",\r\n    \"cArrivalDate\":\"2023-11-08\",\r\n    \"cDeck\":4,\r\n    \"cCabinClass\":\"A\",\r\n    \"cPrice\":5000.00,\r\n    \"cRating\":5,\r\n    \"cDuration\":1.20,\r\n    \"cCruiseProvider\":\"jetwin lanka\",\r\n    \"cMealPreferences\":\"fish / meat\",\r\n    \"cCabinSelection\":\"2\"\r\n\r\n }",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://enthusiastic-tick-school-uniform.cyclic.app/backoffice/single-upload",
+										"description": "###### _used to upload single cruise data.reservationType must be passed as Cruise in the request_"
+									},
+									"response": []
+								},
+								{
+									"name": "Upload activity",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n     \"reservationType\": \"Activity\",\r\n    \"aActivityName\": \"Activity A\",\r\n    \"aDestination\": \"yala national park\",\r\n    \"aDate\":\"2023-10-23\",\r\n    \"aActivityType\":\"walk\",\r\n    \"aRating\":5,\r\n    \"aPrice\":4000.00,\r\n    \"aParticipants\":6,\r\n    \"aAgeOfParticipants\":18\r\n \r\n\r\n }",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://enthusiastic-tick-school-uniform.cyclic.app/backoffice/single-upload",
+										"description": "###### _used to upload single activity data.reservationType must be passed as Activity in the request_"
+									},
+									"response": []
+								},
+								{
+									"name": "Upload package",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"reservationType\": \"Package\",\r\n    \"pPackageName\": \"Package A\",\r\n    \"pDestination\": \"galle\",\r\n    \"pDuration\": 1.30,\r\n    \"pNumTravelers\": 5,\r\n    \"pSpecialty\": \"nothing\",\r\n    \"pRating\": 2,\r\n    \"pPrice\": 1000.00\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://enthusiastic-tick-school-uniform.cyclic.app/backoffice/single-upload",
+										"description": "###### _used to upload single package data.reservationType must be passed as Packagein the request_"
+									},
+									"response": []
+								}
+							],
+							"description": "#### one upload at a time"
+						},
+						{
+							"name": "Bulk upload",
+							"item": [
+								{
+									"name": "Upload cruises",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"documentType\": \"Cruise\",\r\n    \"dataArray\": [\r\n        {\r\n            \"reservationType\": \"Cruise\",\r\n            \"cCruiseName\": \"cruise A\",\r\n            \"cDepartureDestination\": \"colombo\",\r\n            \"cArrivalDestination\": \"jaffna\",\r\n            \"cDepartureDate\": \"2023-11-07\",\r\n            \"cArrivalDate\": \"2023-11-08\",\r\n            \"cDeck\": 4,\r\n            \"cCabinClass\": \"A\",\r\n            \"cPrice\": 5000.00,\r\n            \"cRating\": 5,\r\n            \"cDuration\": 1.20,\r\n            \"cCruiseProvider\": \"jetwin lanka\",\r\n            \"cMealPreferences\": \"fish / meat\",\r\n            \"cCabinSelection\": \"2\"\r\n        },\r\n        {\r\n            \"reservationType\": \"Cruise\",\r\n            \"cCruiseName\": \"cruise B\",\r\n            \"cDepartureDestination\": \"colombo\",\r\n            \"cArrivalDestination\": \"jaffna\",\r\n            \"cDepartureDate\": \"2023-11-07\",\r\n            \"cArrivalDate\": \"2023-11-08\",\r\n            \"cDeck\": 4,\r\n            \"cCabinClass\": \"A\",\r\n            \"cPrice\": 5000.00,\r\n            \"cRating\": 5,\r\n            \"cDuration\": 1.20,\r\n            \"cCruiseProvider\": \"jetwin lanka\",\r\n            \"cMealPreferences\": \"fish / meat\",\r\n            \"cCabinSelection\": \"2\"\r\n        }\r\n    ]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://enthusiastic-tick-school-uniform.cyclic.app/backoffice/bulk-upload",
+										"description": "###### _used to bulk upload cruise data.documentType must be passed as Cruise with the request to select the upload type.also each cruise must contain reservationType parameter as Cruise_"
+									},
+									"response": []
+								},
+								{
+									"name": "Upload activities",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"documentType\": \"Activity\",\r\n    \"dataArray\": [\r\n        {\r\n            \"reservationType\": \"Activity\",\r\n            \"aActivityName\": \"Activity C\",\r\n            \"aDestination\": \"yala national park\",\r\n            \"aDate\": \"2023-10-23\",\r\n            \"aActivityType\": \"walk\",\r\n            \"aRating\": 5,\r\n            \"aPrice\": 4000.00,\r\n            \"aParticipants\": 6,\r\n            \"aAgeOfParticipants\": 18\r\n        },\r\n        {\r\n            \"reservationType\": \"Activity\",\r\n            \"aActivityName\": \"Activity D\",\r\n            \"aDestination\": \"yala national park\",\r\n            \"aDate\": \"2023-10-23\",\r\n            \"aActivityType\": \"walk\",\r\n            \"aRating\": 5,\r\n            \"aPrice\": 4000.00,\r\n            \"aParticipants\": 6,\r\n            \"aAgeOfParticipants\": 18\r\n        }\r\n    ]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://enthusiastic-tick-school-uniform.cyclic.app/backoffice/bulk-upload",
+										"description": "###### _used to bulk upload activity data.documentType must be passed as Activity with the request to select the upload type.also each activitymust contain reservationType parameter as Activity_"
+									},
+									"response": []
+								},
+								{
+									"name": "Upload packages",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"documentType\": \"Package\",\r\n    \"dataArray\": [\r\n        {\r\n            \"reservationType\": \"Package\",\r\n            \"pPackageName\": \"Package C\",\r\n            \"pDestination\": \"galle\",\r\n            \"pDuration\": 1.30,\r\n            \"pNumTravelers\": 5,\r\n            \"pSpecialty\": \"nothing\",\r\n            \"pRating\": 2,\r\n            \"pPrice\": 1000.00\r\n        },\r\n        {\r\n            \"reservationType\": \"Package\",\r\n            \"pPackageName\": \"Package E\",\r\n            \"pDestination\": \"galle\",\r\n            \"pDuration\": 1.30,\r\n            \"pNumTravelers\": 5,\r\n            \"pSpecialty\": \"nothing\",\r\n            \"pRating\": 2,\r\n            \"pPrice\": 1000.00\r\n        }\r\n    ]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://enthusiastic-tick-school-uniform.cyclic.app/backoffice/bulk-upload",
+										"description": "###### _used to bulk upload package data.documentType must be passed as Package with the request to select the upload type.also each package must contain reservationType parameter as Package_"
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Update data",
+					"item": [
+						{
+							"name": "Update cruise",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"reservationType\": \"Cruise\",\r\n    \"cCruiseName\": \"n\",\r\n    \"cDepartureDestination\": \"d\",\r\n    \"cArrivalDestination\":\"a\",\r\n    \"cDepartureDate\":\"2023-11-07\",\r\n    \"cArrivalDate\":\"2023-11-08\",\r\n    \"cDeck\":4,\r\n    \"cCabinClass\":\"a\",\r\n    \"cPrice\":1000.00,\r\n    \"cRating\":5,\r\n    \"cDuration\":1.20,\r\n    \"cCruiseProvider\":\"j\",\r\n    \"cMealPreferences\":\"k\",\r\n    \"cCabinSelection\":\"l\"\r\n\r\n }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://enthusiastic-tick-school-uniform.cyclic.app/backoffice/update-products",
+								"description": "###### _used for updating cruise.reservationType must be passed as Cruise_"
+							},
+							"response": []
+						},
+						{
+							"name": "Update activity",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n     \"reservationType\": \"Activity\",\r\n    \"aActivityName\": \"b\",\r\n    \"aDestination\": \"d\",\r\n    \"aDate\":\"d\",\r\n    \"aActivityType\":\"a\",\r\n    \"aRating\":5,\r\n    \"aPrice\":4000.00,\r\n    \"aParticipants\":6,\r\n    \"aAgeOfParticipants\":18\r\n \r\n\r\n }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://enthusiastic-tick-school-uniform.cyclic.app/backoffice/update-products",
+								"description": "###### _used for updating activity.reservationType must be passed as Activity_"
+							},
+							"response": []
+						},
+						{
+							"name": "Update package",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": " {\r\n     \"reservationType\": \"Package\",\r\n  \"pPackageName\":\"c\",\r\n  \"pDestination\":\"d\",\r\n  \"pDuration\":1.50,\r\n  \"pNumTravelers\":2,\r\n  \"pSpecialty\":\"n\",\r\n  \"pRating\":4,\r\n  \"pPrice\":10000.00\r\n\r\n }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://enthusiastic-tick-school-uniform.cyclic.app/backoffice/update-products",
+								"description": "###### _used for updating packages.reservationType must be passed as Package_"
+							},
+							"response": []
+						}
+					],
+					"description": "#### End points to update data on the system"
+				},
+				{
+					"name": "Delete data",
+					"item": [
+						{
+							"name": "Delete cruise",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"reservationType\":\"Cruise\",\r\n\"cCruiseName\":\"a\"\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://enthusiastic-tick-school-uniform.cyclic.app/backoffice/delete",
+								"description": "###### _used for deleting cruises.reservationType must be passed as Cruise_"
+							},
+							"response": []
+						},
+						{
+							"name": "Delete activity",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"reservationType\":\"Activity\",\r\n\"aActivityName\":\"b\"\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://enthusiastic-tick-school-uniform.cyclic.app/backoffice/delete",
+								"description": "###### _used for deleting activity.reservationType must be passed as Activity_"
+							},
+							"response": []
+						},
+						{
+							"name": "Delete package",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"reservationType\":\"Package\",\r\n\"pPackageName\":\"cw\"\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://enthusiastic-tick-school-uniform.cyclic.app/backoffice/delete",
+								"description": "###### _used for deleting packages.reservationType must be passed as Package_"
+							},
+							"response": []
+						}
+					],
+					"description": "#### End points to delete data on the system"
+				},
+				{
+					"name": "View data",
+					"item": [
+						{
+							"name": "View cruises",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "https://enthusiastic-tick-school-uniform.cyclic.app/backoffice/view-cruises",
+								"description": "###### _used to view all cruises_"
+							},
+							"response": []
+						},
+						{
+							"name": "View activities",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "https://enthusiastic-tick-school-uniform.cyclic.app/backoffice/view-activities",
+								"description": "###### _used to view all activities_"
+							},
+							"response": []
+						},
+						{
+							"name": "View packages",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "https://enthusiastic-tick-school-uniform.cyclic.app/backoffice/view-packages",
+								"description": "###### _used to view all packages_"
+							},
+							"response": []
+						},
+						{
+							"name": "View booked cruises",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "https://enthusiastic-tick-school-uniform.cyclic.app/backoffice/view-booked-cruises",
+								"description": "###### _used to view all booked cruises_"
+							},
+							"response": []
+						},
+						{
+							"name": "View booked activities",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "https://enthusiastic-tick-school-uniform.cyclic.app/backoffice/view-booked-activities",
+								"description": "###### _used to view all booked activities_"
+							},
+							"response": []
+						},
+						{
+							"name": "View booked packages",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "https://enthusiastic-tick-school-uniform.cyclic.app/backoffice/view-booked-packages",
+								"description": "###### _used to view all booked packages_"
+							},
+							"response": []
+						}
+					],
+					"description": "#### End points to view data on the system"
+				}
+			],
+			"description": "### End points for back officers"
+		},
+		{
+			"name": "Travel agent",
+			"item": [
+				{
+					"name": "View data",
+					"item": [
+						{
+							"name": "View cruises",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "https://enthusiastic-tick-school-uniform.cyclic.app/travel-agent/view-cruises",
+								"description": "###### _used to view all cruises_"
+							},
+							"response": []
+						},
+						{
+							"name": "View activities",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "https://enthusiastic-tick-school-uniform.cyclic.app/travel-agent/view-activities",
+								"description": "###### _used to view all activities_"
+							},
+							"response": []
+						},
+						{
+							"name": "View packages",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "https://enthusiastic-tick-school-uniform.cyclic.app/travel-agent/view-packages",
+								"description": "###### _used to view all packages_"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Search data",
+					"item": [
+						{
+							"name": "Cruise search",
+							"item": [
+								{
+									"name": "by departure destination",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n\"searchBy\":\"departureDistination\",\r\n\"cDepartureDestination\":\"b\"     \r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://enthusiastic-tick-school-uniform.cyclic.app/travel-agent/search-cruises",
+										"description": "###### _used to search cruises with its departure destination.searchBy must be passed as departureDistination_"
+									},
+									"response": []
+								},
+								{
+									"name": "by arrival destination",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n\"searchBy\":\"arrivalDistination\",\r\n\"cArrivalDestination\":\"c\"     \r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://enthusiastic-tick-school-uniform.cyclic.app/travel-agent/search-cruises",
+										"description": "###### _used to search cruises with its arrival destination.searchBy must be passed as arrivalDistination_"
+									},
+									"response": []
+								},
+								{
+									"name": "by departure date",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"searchBy\": \"departureDate\",\r\n    \"cDepartureDate\": \"2023-12-01\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://enthusiastic-tick-school-uniform.cyclic.app/travel-agent/search-cruises",
+										"description": "###### _used to search cruises with its departure date.searchBy must be passed as departureDate_"
+									},
+									"response": []
+								},
+								{
+									"name": "by arrival date",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"searchBy\": \"arrivalDate\",\r\n    \"cArrivalDate\": \"2023-12-05\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://enthusiastic-tick-school-uniform.cyclic.app/travel-agent/search-cruises",
+										"description": "###### _used to search cruises with its arrival date.searchBy must be passed as arrivalDate_"
+									},
+									"response": []
+								},
+								{
+									"name": "By deck",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"searchBy\": \"deck\",\r\n    \"cDeck\": 3\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://enthusiastic-tick-school-uniform.cyclic.app/travel-agent/search-cruises",
+										"description": "###### _used to search cruises with its deck number.searchBy must be passed as deck_"
+									},
+									"response": []
+								},
+								{
+									"name": "By cabin class",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"searchBy\": \"cabinClass\",\r\n    \"cCabinClass\": \"h\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://enthusiastic-tick-school-uniform.cyclic.app/travel-agent/search-cruises",
+										"description": "###### _used to search cruises with its cabin class.searchBy must be passed as cabinClass_"
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Activity search",
+							"item": [
+								{
+									"name": "By destination",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"searchBy\": \"destination\",\r\n    \"aDestination\": \"das\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://enthusiastic-tick-school-uniform.cyclic.app/travel-agent/search-activities",
+										"description": "###### _used to search activity with its destination.searchBy must be passed as destination_"
+									},
+									"response": []
+								},
+								{
+									"name": "By date",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"searchBy\": \"date\",\r\n    \"aDate\": \"e\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://enthusiastic-tick-school-uniform.cyclic.app/travel-agent/search-activities",
+										"description": "###### _used to search activity with its date.searchBy must be passed as date_"
+									},
+									"response": []
+								},
+								{
+									"name": "By activity type",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"searchBy\": \"activityType\",\r\n    \"aActivityType\": \"f\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://enthusiastic-tick-school-uniform.cyclic.app/travel-agent/search-activities",
+										"description": "###### _used to search activity with its type.searchBy must be passed as activityType_"
+									},
+									"response": []
+								},
+								{
+									"name": "By rating",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"searchBy\": \"rating\",\r\n    \"aRating\": 5\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://enthusiastic-tick-school-uniform.cyclic.app/travel-agent/search-activities",
+										"description": "###### _used to search activity with its rating.searchBy must be passed as rating_"
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Package search",
+							"item": [
+								{
+									"name": "By destination",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"searchBy\": \"destination\",\r\n    \"pDestination\": \"x\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://enthusiastic-tick-school-uniform.cyclic.app/travel-agent/search-packages",
+										"description": "###### _used to search packages with its destination.searchBy must be passed as destination_"
+									},
+									"response": []
+								},
+								{
+									"name": "By duration",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"searchBy\": \"duration\",\r\n    \"pDuration\": 1\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://enthusiastic-tick-school-uniform.cyclic.app/travel-agent/search-packages",
+										"description": "###### _used to search packages with its duration.searchBy must be passed as duration_"
+									},
+									"response": []
+								},
+								{
+									"name": "By number of travelers",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"searchBy\": \"numberOfTravelers\",\r\n    \"pNumTravelers\": 5\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://enthusiastic-tick-school-uniform.cyclic.app/travel-agent/search-packages",
+										"description": "###### _used to search packages with its number of travelers.searchBy must be passed as numberOfTravelers_"
+									},
+									"response": []
+								},
+								{
+									"name": "By speciality",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"searchBy\": \"speciality\",\r\n    \"pSpecialty\": \"x\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://enthusiastic-tick-school-uniform.cyclic.app/travel-agent/search-packages",
+										"description": "###### _used to search packages with its speciality.searchBy must be passed as speciality_"
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Book reservations",
+					"item": [
+						{
+							"name": "Book cruise",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": " {\r\n     \"bookerFname\":\"malindu\",\r\n     \"bookerLname\":\"pabasara\",\r\n     \"bookerNIC\":\"992722231v\",\r\n     \"bookerPhone\":\"0715158902\",\r\n     \"bookerEmail\":\"mpabasara11@gmail.com\",\r\n     \"bookingDate\":\"2023-11-12\",\r\n     \"bookingOfficerName\":\"dasaa\",\r\n     \"bookingOfficerNic\":\"2324234234v\",\r\n     \"bookingOfficerMail\":\"gasa@gmail.com\",\r\n    \"cCruiseName\": \"a\",\r\n    \"cDepartureDestination\": \"b\",\r\n    \"cArrivalDestination\":\"c\",\r\n    \"cDepartureDate\":\"2023-11-07\",\r\n    \"cArrivalDate\":\"2023-11-08\",\r\n    \"cDeck\":4,\r\n    \"cCabinClass\":\"g\",\r\n    \"cPrice\":100.50,\r\n    \"cRating\":5,\r\n    \"cDuration\":1.20,\r\n    \"cCruiseProvider\":\"j\",\r\n    \"cMealPreferences\":\"k\",\r\n    \"cCabinSelection\":\"l\",\r\n    \"selectedMealPreference\":\"a\",\r\n    \"selectedCabin\":\"aa\"\r\n\r\n }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://enthusiastic-tick-school-uniform.cyclic.app/travel-agent/book-cruise",
+								"description": "###### _used to book cruises_"
+							},
+							"response": []
+						},
+						{
+							"name": "Book activity",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": " {\r\n     \"bookerFname\":\"malindu\",\r\n     \"bookerLname\":\"pabasara\",\r\n     \"bookerNIC\":\"992722231v\",\r\n     \"bookerPhone\":\"0715158902\",\r\n     \"bookerEmail\":\"mpabasara11@gmail.com\",\r\n     \"bookingDate\":\"2023-11-12\",\r\n      \"bookingOfficerName\":\"dasaa\",\r\n     \"bookingOfficerNic\":\"2324234234v\",\r\n     \"bookingOfficerMail\":\"gasa@gmail.com\",\r\n    \"aActivityName\": \"b\",\r\n    \"aDestination\": \"d\",\r\n    \"aDate\":\"e\",\r\n    \"aActivityType\":\"f\",\r\n    \"aRating\":5,\r\n    \"aPrice\":4,\r\n    \"aParticipants\":6,\r\n    \"aAgeOfParticipants\":18,\r\n    \"aNumberOfParticipants\":\"2\",\r\n    \"aMaximumParticipants\":\"8\"\r\n\r\n }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://enthusiastic-tick-school-uniform.cyclic.app/travel-agent/book-activity",
+								"description": "###### _used to book activities_"
+							},
+							"response": []
+						},
+						{
+							"name": "Book package",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"bookerFname\": \"malindu\",\r\n    \"bookerLname\": \"pabasara\",\r\n    \"bookerNIC\": \"992722231v\",\r\n    \"bookerPhone\": \"0715158902\",\r\n    \"bookerEmail\": \"mpabasara11@gmail.com\",\r\n    \"bookingDate\": \"2023-11-12\",\r\n    \"bookingOfficerName\": \"dasaa\",\r\n    \"bookingOfficerNic\": \"2324234234v\",\r\n    \"bookingOfficerMail\": \"gasa@gmail.com\",\r\n    \"pPackageName\": \"y\",\r\n    \"pDestination\": \"b\",\r\n    \"pDuration\": 1.34,\r\n    \"pNumTravelers\": 2,\r\n    \"pSpecialty\": \"e\",\r\n    \"pRating\": 4,\r\n    \"pPrice\": 100\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://enthusiastic-tick-school-uniform.cyclic.app/travel-agent/book-package",
+								"description": "###### _used to book packages_"
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"description": "### End points for travel agents"
+		}
+	]
+}
